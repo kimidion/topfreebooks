@@ -1,3 +1,15 @@
+# Data visualization project
+
+I'm fascinated with the frequently downloaded information page on the [Project Gutenburg](https://www.gutenberg.org/browse/scores/top) website. The website has a huge amount of traffic and the download numbers are incredible for public domain literature that are also available for free on other platforms that rank higher on Google Search.
+
+I spun up this project to learn more about the information and attempt to aggregate and visualize some of the data.
+
+As a quick and dirty, I created a Google spreadsheet and wrote an AppsScript that scrapes the above linked webpage daily and saves data content to the sheet.
+
+This app pulls from that spreadsheet to populate data but will change at some point in the future bc it is a bit messy and def not optimal.
+
+## NextJs (beta v 13)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
