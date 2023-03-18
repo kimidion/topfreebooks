@@ -2,100 +2,106 @@ import "server-only"
 import { google } from 'googleapis'
 import { SortedData, RankedStats, Stat } from "@/types/TopData"
 
-export async function getAllDailyCount() {
-  try {
-    const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
-    const sheets = google.sheets({ version: 'v4', auth })
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'dailyCount!A:E', // sheet name
-    })
+// export async function getAllDailyCount() {
+//   try {
+//     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
+//     const sheets = google.sheets({ version: 'v4', auth })
+//     const response = await sheets.spreadsheets.values.get({
+//       spreadsheetId: process.env.SPREADSHEET_ID,
+//       range: 'dailyCount!A:E', // sheet name
+//     })
 
-    const rows = response.data.values
-    if (rows?.length) {
-      const formatted = rows.map((row) => ({
-        date: row[1],
-        last1: row[2],
-        last7: row[3],
-        last30: row[4]
-      }))
-      return formatted.slice(1, formatted.length)
-    }
-  } catch (err) {
-    console.log(err)
-  }
-  return []
-}
+//     const rows = response.data.values
+//     if (rows?.length) {
+//       const formatted = rows.map((row) => ({
+//         date: row[1],
+//         last1: row[2],
+//         last7: row[3],
+//         last30: row[4]
+//       }))
+//       return formatted.slice(1, formatted.length)
+//     }
+//   } catch (err) {
+//     console.log(err)
+//   }
+//   return []
+// }
 
-export async function getAllTopBooks() {
-    try {
-        const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
-        const sheets = google.sheets({ version: 'v4', auth })
-        const response = await sheets.spreadsheets.values.get({
-            spreadsheetId: process.env.SPREADSHEET_ID,
-            range: 'topBooks!A:L', // sheet name
-        })
+// export async function getAllTopBooks() {
+//     try {
+//         const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
+//         const sheets = google.sheets({ version: 'v4', auth })
+//         const response = await sheets.spreadsheets.values.get({
+//             spreadsheetId: process.env.SPREADSHEET_ID,
+//             range: 'topBooks!A:L', // sheet name
+//         })
     
-        const rows = response.data.values
-        if (rows?.length) {
-            const formatted = rows.map((row) => ({
-                date: row[1],
-                category: row[2],
-                total_count: row[3],
-                total_percent: row[4],
-                top_10_count: row[5],
-                top_10_percent: row[6],
-                top_25_count: row[7],
-                top_25_percent: row[8],
-                top_50_count: row[9],
-                top_50_percent: row[10],
-                list: row[11]
-            }))
-            return formatted.slice(1, formatted.length)
-        }
-    } catch (err) {
-        console.log(err)
-    }
-    return []
-}
+//         const rows = response.data.values
+//         if (rows?.length) {
+//             const formatted = rows.map((row) => ({
+//                 date: row[1],
+//                 category: row[2],
+//                 total_count: row[3],
+//                 total_percent: row[4],
+//                 top_10_count: row[5],
+//                 top_10_percent: row[6],
+//                 top_25_count: row[7],
+//                 top_25_percent: row[8],
+//                 top_50_count: row[9],
+//                 top_50_percent: row[10],
+//                 list: row[11]
+//             }))
+//             return formatted.slice(1, formatted.length)
+//         }
+//     } catch (err) {
+//         console.log(err)
+//     }
+//     return []
+// }
 
-export async function getAllTopAuthors() {
-    try {
-        const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
-        const sheets = google.sheets({ version: 'v4', auth })
-        const response = await sheets.spreadsheets.values.get({
-            spreadsheetId: process.env.SPREADSHEET_ID,
-            range: 'topAuthors!A:L', // sheet name
-        })
+// export async function getAllTopAuthors() {
+//     try {
+//         const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
+//         const sheets = google.sheets({ version: 'v4', auth })
+//         const response = await sheets.spreadsheets.values.get({
+//             spreadsheetId: process.env.SPREADSHEET_ID,
+//             range: 'topAuthors!A:L', // sheet name
+//         })
     
-        const rows = response.data.values
-        if (rows?.length) {
-            const formatted = rows.map((row) => ({
-                date: row[1],
-                category: row[2],
-                total_count: row[3],
-                total_percent: row[4],
-                top_10_count: row[5],
-                top_10_percent: row[6],
-                top_25_count: row[7],
-                top_25_percent: row[8],
-                top_50_count: row[9],
-                top_50_percent: row[10],
-                list: row[11]
-            }))
-            return formatted.slice(1, formatted.length)
-        }
-    } catch (err) {
-        console.log(err)
-    }
-    return []
-}
+//         const rows = response.data.values
+//         if (rows?.length) {
+//             const formatted = rows.map((row) => ({
+//                 date: row[1],
+//                 category: row[2],
+//                 total_count: row[3],
+//                 total_percent: row[4],
+//                 top_10_count: row[5],
+//                 top_10_percent: row[6],
+//                 top_25_count: row[7],
+//                 top_25_percent: row[8],
+//                 top_50_count: row[9],
+//                 top_50_percent: row[10],
+//                 list: row[11]
+//             }))
+//             return formatted.slice(1, formatted.length)
+//         }
+//     } catch (err) {
+//         console.log(err)
+//     }
+//     return []
+// }
 
 export async function getAllDataByDate(date: string) {
     const dailyData: SortedData = { date, dateList: [] }
     try {
-        const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] })
-        const sheets = google.sheets({ version: 'v4', auth })
+        const target = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+        const jwt = new google.auth.JWT(
+            process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+            undefined,
+            (process.env.GOOGLE_SHEETS_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+            target
+        )
+        const sheets = google.sheets({ version: 'v4', auth: jwt })
         const dailySheet = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.SPREADSHEET_ID,
             range: 'dailyCount!A:E', // sheet name

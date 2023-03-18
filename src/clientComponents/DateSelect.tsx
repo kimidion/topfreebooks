@@ -12,10 +12,10 @@ const DateSelect = ({ date, dateList }: DateSelectType) => {
         router.push(`/${e.currentTarget.value}`)
       }
     return (
-        <select onChange={handleDateChange}>
+        <select onChange={handleDateChange} defaultValue={date}>
           {dateList.map((dateOption) => {
             return (
-              <option key={dateOption} value={dateOption} selected={dateOption == date}>
+              <option key={dateOption} value={dateOption}>
                 {dateOption}
               </option>
             )
