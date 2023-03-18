@@ -15,7 +15,7 @@ const DateSelect = ({ date, dateList }: DateSelectType) => {
         <select onChange={handleDateChange}>
           {dateList.map((dateOption) => {
             return (
-              <option value={dateOption} selected={dateOption == date}>
+              <option key={dateOption} value={dateOption} selected={dateOption == date}>
                 {dateOption}
               </option>
             )

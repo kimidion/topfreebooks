@@ -66,7 +66,7 @@ const DataDisplay = ({ classes, data, topShowing, setTopShowing }: DataDisplayTy
                 break
             }
         }
-    }, [topShowing])
+    })
 
     return (
         <div className={`p-4 ${classes}`}>
