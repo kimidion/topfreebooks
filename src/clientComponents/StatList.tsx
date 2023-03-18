@@ -1,7 +1,15 @@
 'use client'
-
+import { Stat } from "@/types/TopData"
 import BookListItem from "./BookListItem"
 import AuthorListItem from "./AuthorListItem"
+
+type StatListType = {
+    list?: Array<Stat>,
+    topShowing: number,
+    asAuthor: boolean,
+    count?: number,
+    percent?: number
+}
 
 const StatList = ({ list, topShowing, count, percent, asAuthor }: StatListType) => {
     return (
@@ -28,11 +36,3 @@ const StatList = ({ list, topShowing, count, percent, asAuthor }: StatListType) 
 }
   
 export default StatList
-
-type StatListType = {
-    list?: Array<Stat>,
-    topShowing: number,
-    asAuthor: boolean,
-    count?: number,
-    percent?: number
-}

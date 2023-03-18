@@ -1,4 +1,5 @@
 'use client'
+import { DataInterval } from "@/types/TopData";
 import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import StatList from "./StatList"
 
@@ -19,54 +20,55 @@ const DataDisplay = ({ classes, data, topShowing, setTopShowing }: DataDisplayTy
     const [authorsList, setAuthorsList] = useState(data?.top_100_authors?.list || [])
 
     useEffect(() => {
+        const toParse = {...data}
         // I don't like this but working with arrays can be finicky
-        const bookList = data?.top_100_books?.list || []
+        const bookList = toParse?.top_100_books?.list || []
         const newBookList = [...bookList]
-        const authorList = data?.top_100_authors?.list || []
+        const authorList = toParse?.top_100_authors?.list || []
         const newAuthorList = [...authorList]
         switch(topShowing) {
             case 10: {
                 //set values
-                setBooksCount(data?.top_100_books?.top_10_count || 0)
-                setBooksPercent(data?.top_100_books?.top_10_percent || 0)
+                setBooksCount(toParse?.top_100_books?.top_10_count || 0)
+                setBooksPercent(toParse?.top_100_books?.top_10_percent || 0)
                 setBooksList(newBookList.splice(0,10))
-                setAuthorsCount(data?.top_100_authors?.top_10_count || 0)
-                setAuthorsPercent(data?.top_100_authors?.top_10_percent || 0)
+                setAuthorsCount(toParse?.top_100_authors?.top_10_count || 0)
+                setAuthorsPercent(toParse?.top_100_authors?.top_10_percent || 0)
                 setAuthorsList(newAuthorList.splice(0,10))
                 break;
             }
             case 25: {
                 //set values
-                setBooksCount(data?.top_100_books?.top_25_count || 0)
-                setBooksPercent(data?.top_100_books?.top_25_percent || 0)
+                setBooksCount(toParse?.top_100_books?.top_25_count || 0)
+                setBooksPercent(toParse?.top_100_books?.top_25_percent || 0)
                 setBooksList(newBookList.splice(0,25))
-                setAuthorsCount(data?.top_100_authors?.top_25_count || 0)
-                setAuthorsPercent(data?.top_100_authors?.top_25_percent || 0)
+                setAuthorsCount(toParse?.top_100_authors?.top_25_count || 0)
+                setAuthorsPercent(toParse?.top_100_authors?.top_25_percent || 0)
                 setAuthorsList(newAuthorList.splice(0,25))
                 break
             }
             case 50: {
                 //set values
-                setBooksCount(data?.top_100_books?.top_50_count || 0)
-                setBooksPercent(data?.top_100_books?.top_50_percent || 0)
+                setBooksCount(toParse?.top_100_books?.top_50_count || 0)
+                setBooksPercent(toParse?.top_100_books?.top_50_percent || 0)
                 setBooksList(newBookList.splice(0,50))
-                setAuthorsCount(data?.top_100_authors?.top_50_count || 0)
-                setAuthorsPercent(data?.top_100_authors?.top_50_percent || 0)
+                setAuthorsCount(toParse?.top_100_authors?.top_50_count || 0)
+                setAuthorsPercent(toParse?.top_100_authors?.top_50_percent || 0)
                 setAuthorsList(newAuthorList.splice(0,50))
                 break
             }
             default: {
                 //set values
-                setBooksCount(data?.top_100_books?.top_100_count || 0)
-                setBooksPercent(data?.top_100_books?.top_100_percent || 0)
+                setBooksCount(toParse?.top_100_books?.top_100_count || 0)
+                setBooksPercent(toParse?.top_100_books?.top_100_percent || 0)
                 setBooksList(newBookList)
-                setAuthorsCount(data?.top_100_authors?.top_100_count || 0)
-                setAuthorsPercent(data?.top_100_authors?.top_100_percent || 0)
+                setAuthorsCount(toParse?.top_100_authors?.top_100_count || 0)
+                setAuthorsPercent(toParse?.top_100_authors?.top_100_percent || 0)
                 setAuthorsList(newAuthorList)
                 break
             }
         }
-    })
+    }, [topShowing, data])
 
     return (
         <div className={`p-4 ${classes}`}>

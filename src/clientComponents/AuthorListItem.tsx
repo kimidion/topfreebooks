@@ -1,4 +1,5 @@
 'use client'
+import { Stat } from "@/types/TopData"
 
 type AuthorListItemType = {
     author: Stat,

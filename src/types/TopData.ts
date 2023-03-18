@@ -1,5 +1,5 @@
 
-type SortedData = {
+export type SortedData = {
     date: string
     dateList: Array<string>
     last1?: DataInterval
@@ -7,13 +7,13 @@ type SortedData = {
     last30?: DataInterval
 }
 
-type DataInterval = {
+export type DataInterval = {
     total: number
     top_100_authors?: RankedStats
     top_100_books?: RankedStats
 }
 
-type RankedStats = {
+export type RankedStats = {
     top_100_count: number
     top_100_percent: number
     top_10_count: number
@@ -25,7 +25,7 @@ type RankedStats = {
     list: Array<Stat>
 }
 
-type Stat = {
+export type Stat = {
     pgId?: number
     title?: string
     author: string

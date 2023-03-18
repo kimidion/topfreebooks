@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react"
+import { SortedData } from "@/types/TopData"
 import DataDisplay from "./DataDisplay"
 
 type DataRangeDisplayType = {
