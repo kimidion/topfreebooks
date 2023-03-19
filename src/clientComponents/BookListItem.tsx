@@ -1,5 +1,5 @@
 'use client'
-import { Stat } from "@/types/TopData"
+import type { Stat } from "@/types/TopData"
 
 type BookListItemType = {
     book: Stat,

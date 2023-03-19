@@ -1,5 +1,5 @@
 'use client'
-import { DataInterval } from "@/types/TopData";
+import type { DataInterval } from "@/types/TopData";
 import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import StatList from "./StatList"
 

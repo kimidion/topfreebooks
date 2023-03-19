@@ -1,6 +1,6 @@
 import "server-only"
 import { google } from 'googleapis'
-import { SortedData, RankedStats, Stat } from "@/types/TopData"
+import type { SortedData, RankedStats, Stat } from "@/types/TopData"
 
 // export async function getAllDailyCount() {
 //   try {

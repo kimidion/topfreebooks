@@ -1,6 +1,8 @@
 import DataRangeDisplay from "@/clientComponents/DataRangeDisplay"
 import DateSelect from "@/clientComponents/DateSelect"
 import { getAllDataByDate } from "@/lib/sheets"
+import type { SortedData } from "@/types/TopData"
+import { getAvailableDates } from "@/utils/getAvailableDates"
 
 type PageType = {
   params: {
@@ -9,13 +11,21 @@ type PageType = {
 }
 
 const Page = async ({ params: { date } }: PageType) => {
-  const data = await getAllDataByDate(date)
+  const getData: Promise<SortedData> = getAllDataByDate(date)
+  const data = await getData
   return (
     <>
-        <DateSelect date={date} dateList={data.dateList} />
+        <DateSelect date={date} />
         <DataRangeDisplay date={date} data={data} />
     </>
   )
+}
+
+export const generateStaticParams = () => {
+  const dates = getAvailableDates()
+  return dates.map((d) => ({
+    date: d.formatted,
+  }));
 }
 
 export default Page
