@@ -39,9 +39,15 @@ const DataRangeDisplay = ({ date, data }: DataRangeDisplayType) => {
         <>
             <h2>{title}</h2>
             <div>
-                <button type="button" onClick={() => setRange(1)}>1 day</button>
-                <button type="button" onClick={() => setRange(7)}>7 days</button>
-                <button type="button" onClick={() => setRange(30)}>30 days</button>
+                <button type="button" onClick={() => range !== 1 ? setRange(1) : null} className={`${range === 1 ? "bg-cyan-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-l-md`}>
+                    1 day
+                </button>
+                <button type="button" onClick={() => range !== 7 ? setRange(7) : null} className={`${range === 7 ? "bg-cyan-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
+                    7 days
+                </button>
+                <button type="button" onClick={() => range !== 30 ? setRange(30) : null} className={`${range === 30 ? "bg-cyan-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-r-md`}>
+                    30 days
+                </button>
             </div>
             <div>
                 {range === 1 &&

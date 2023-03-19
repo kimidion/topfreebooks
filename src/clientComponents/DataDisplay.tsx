@@ -75,26 +75,36 @@ const DataDisplay = ({ classes, data, topShowing, setTopShowing }: DataDisplayTy
             {data?.total && 
                 <h3>{data?.total.toLocaleString()} total downloads</h3>
             }
-            <div>
-                <button type="button" onClick={() => setTopShowing(10)}>Top 10</button>
-                <button type="button" onClick={() => setTopShowing(25)}>Top 25</button>
-                <button type="button" onClick={() => setTopShowing(50)}>Top 50</button>
-                <button type="button" onClick={() => setTopShowing(100)}>Top 100</button>
+            <div className="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm">
+                <button type="button" onClick={() => topShowing !== 10 ? setTopShowing(10) : null} className={`${topShowing === 10 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-l-md`}>
+                    Top 10
+                </button>
+                <button type="button" onClick={() => topShowing !== 25 ? setTopShowing(25) : null} className={`${topShowing === 25 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
+                    Top 25
+                </button>
+                <button type="button" onClick={() => topShowing !== 50 ? setTopShowing(50) : null} className={`${topShowing === 50 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
+                    Top 50
+                </button>
+                <button type="button" onClick={() => topShowing !== 100 ? setTopShowing(100) : null} className={`${topShowing === 100 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-r-md`}>
+                    Top 100
+                </button>
             </div>
-            <StatList
-                topShowing={topShowing}
-                count={booksCount}
-                percent={booksPercent}
-                list={booksList}
-                asAuthor={false}
-            />
-            <StatList
-                topShowing={topShowing}
-                count={authorsCount}
-                percent={authorsPercent}
-                list={authorsList}
-                asAuthor={true}
-            />
+            <div className="lg:flex lg:gap-2">
+                <StatList
+                    topShowing={topShowing}
+                    count={booksCount}
+                    percent={booksPercent}
+                    list={booksList}
+                    asAuthor={false}
+                />
+                <StatList
+                    topShowing={topShowing}
+                    count={authorsCount}
+                    percent={authorsPercent}
+                    list={authorsList}
+                    asAuthor={true}
+                />
+            </div>
         </div>
     )
 }
