@@ -1,6 +1,6 @@
 # Data visualization project
 
-I'm fascinated with the frequently downloaded information page on the [Project Gutenburg](https://www.gutenberg.org/browse/scores/top) website. The website has a huge amount of traffic and the download numbers are incredible for public domain literature that are also available for free on other platforms that rank higher on Google Search.
+I'm fascinated with the frequently downloaded information page on the [Project Gutenberg](https://www.gutenberg.org/browse/scores/top) website. The website has a huge amount of traffic and the download numbers are incredible for public domain literature that are also available for free on other platforms that rank higher on Google Search.
 
 I spun up this project to learn more about the information and attempt to aggregate and visualize some of the data.
 

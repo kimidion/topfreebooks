@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata = {
   title: 'Top Free Books: Trending Public Domain Books',
-  description: 'Explore the data trends of the top 100 free public domain books based on download data from the Project Gutenburg website.',
+  description: 'Explore the data trends of the top 100 free public domain books based on download data from the Project Gutenberg website.',
 }
 
 export default function RootLayout({
