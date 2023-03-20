@@ -71,25 +71,30 @@ const DataDisplay = ({ classes, data, topShowing, setTopShowing }: DataDisplayTy
     }, [topShowing, data])
 
     return (
-        <div className={`p-4 ${classes}`}>
-            {data?.total && 
-                <h3>{data?.total.toLocaleString()} total downloads</h3>
-            }
-            <div className="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm">
-                <button type="button" onClick={() => topShowing !== 10 ? setTopShowing(10) : null} className={`${topShowing === 10 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-l-md`}>
-                    Top 10
-                </button>
-                <button type="button" onClick={() => topShowing !== 25 ? setTopShowing(25) : null} className={`${topShowing === 25 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
-                    Top 25
-                </button>
-                <button type="button" onClick={() => topShowing !== 50 ? setTopShowing(50) : null} className={`${topShowing === 50 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
-                    Top 50
-                </button>
-                <button type="button" onClick={() => topShowing !== 100 ? setTopShowing(100) : null} className={`${topShowing === 100 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-r-md`}>
-                    Top 100
-                </button>
+        <div className={`py-4 ${classes}`}>
+            <div className="flex items-center">
+                {data?.total && 
+                    <div className="grow px-3 md:px-5 xl:px-7">
+                        <span className="block md:inline text-2xl md:text-3xl font-semibold leading-7 text-fuchsia-800">{data?.total.toLocaleString()} </span>
+                        <span className="block md:inline text-xs md:text-lg font-light text-slate-600"> total downloads</span>
+                    </div>
+                }
+                <div className="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm">
+                    <button type="button" onClick={() => topShowing !== 10 ? setTopShowing(10) : null} className={`${topShowing === 10 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-l-md`}>
+                        <span className="hidden sm:block">Top&nbsp;</span> 10
+                    </button>
+                    <button type="button" onClick={() => topShowing !== 25 ? setTopShowing(25) : null} className={`${topShowing === 25 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
+                        <span className="hidden sm:block">Top&nbsp;</span> 25
+                    </button>
+                    <button type="button" onClick={() => topShowing !== 50 ? setTopShowing(50) : null} className={`${topShowing === 50 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}>
+                        <span className="hidden sm:block">Top&nbsp;</span> 50
+                    </button>
+                    <button type="button" onClick={() => topShowing !== 100 ? setTopShowing(100) : null} className={`${topShowing === 100 ? "bg-green-200" : "hover:bg-gray-50"} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 rounded-r-md`}>
+                        <span className="hidden sm:block">Top&nbsp;</span> 100
+                    </button>
+                </div>
             </div>
-            <div className="lg:flex lg:gap-2">
+            <div className="lg:flex lg:gap-2 lg:items-start">
                 <StatList
                     topShowing={topShowing}
                     count={booksCount}

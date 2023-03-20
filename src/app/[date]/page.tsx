@@ -3,6 +3,7 @@ import DateSelect from "@/clientComponents/DateSelect"
 import { getAllDataByDate } from "@/lib/sheets"
 import type { SortedData } from "@/types/TopData"
 import { getAvailableDates } from "@/utils/getAvailableDates"
+import { Suspense } from "react"
 
 type PageType = {
   params: {
@@ -16,7 +17,9 @@ const Page = async ({ params: { date } }: PageType) => {
   return (
     <>
         <DateSelect date={date} />
-        <DataRangeDisplay date={date} data={data} />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <DataRangeDisplay date={date} data={data} />
+        </Suspense>
     </>
   )
 }

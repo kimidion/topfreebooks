@@ -1,8 +1,8 @@
 
-const Home = () => {
+const HomeLoading = () => {
   return (
     <div>Loading...</div>
   )
 }
 
-export default Home
+export default HomeLoading
