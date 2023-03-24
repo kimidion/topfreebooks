@@ -92,7 +92,7 @@ import type { SortedData, RankedStats, Stat } from "@/types/TopData"
 // }
 
 export async function getAllDataByDate(date: string) {
-    const dailyData: SortedData = { date, dateList: [] }
+    const dailyData: SortedData = { date }
     try {
         const target = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
         const jwt = new google.auth.JWT(
@@ -114,9 +114,6 @@ export async function getAllDataByDate(date: string) {
             spreadsheetId: process.env.SPREADSHEET_ID,
             range: 'topBooks!A:L', // sheet name
         })
-        const dateList = bookSheet.data.values?.map((day) => day[1]) || []
-        const uniqued = Array.from(new Set(dateList))
-        dailyData.dateList = uniqued.slice(1, uniqued.length)
         const daily = dailySheet.data.values?.filter((day) => {
             return day[1] == date 
         })

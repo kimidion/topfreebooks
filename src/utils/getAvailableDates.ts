@@ -29,7 +29,7 @@ export const getAvailableDates = (): Array<{ date: Date, formatted: string }> =>
     return dateList
 }
 
-const formatDate = (newDate: Date) => {
+const formatDate = (newDate: Date): string => {
     // year as (YYYY) format
     let year = newDate.getFullYear()
     // month as (MM) format

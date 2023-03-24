@@ -1,7 +1,8 @@
+import StatPageLoading from "@/components/loading/StatPageLoading"
 
 const Page = () => {
   return (
-    <div>Loading...</div>
+    <StatPageLoading />
   )
 }
 

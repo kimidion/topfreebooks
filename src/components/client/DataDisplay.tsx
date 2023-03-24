@@ -9,6 +9,10 @@ type DataDisplayType = {
     topShowing: number,
     setTopShowing: Dispatch<SetStateAction<number>>
 }
+export const metadata = {
+    title: 'TEST Top Free Books: Trending Public Domain Books',
+    description: 'Explore the data trends of the top 100 free public domain books based on download data from the Project Gutenberg website.',
+  }
 
 const DataDisplay = ({ classes, data, topShowing, setTopShowing }: DataDisplayType) => {
     // all of this state stuff is pretty annoying bc I have an odd data format so it might be better to move this to a custom hook

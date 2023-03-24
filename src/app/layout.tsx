@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
-import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import './globals.css'
 
 export const metadata = {
@@ -8,11 +8,7 @@ export const metadata = {
   description: 'Explore the data trends of the top 100 free public domain books based on download data from the Project Gutenberg website.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout = ({ children }: {children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
@@ -26,3 +22,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

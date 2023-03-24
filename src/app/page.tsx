@@ -1,9 +1,9 @@
-import { getLatestDateFormatted } from '@/utils/getAvailableDates'
-import { redirect } from 'next/navigation'
+import RedirectToLatestDate from '@/components/client/RedirectToLatestDate'
 
-const Home = async () => {
-  const dateString = getLatestDateFormatted()
-  redirect(`/${dateString}`)
+const Home = () => {
+  return (
+    <RedirectToLatestDate />
+  )
 }
 
 export default Home

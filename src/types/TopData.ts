@@ -1,7 +1,6 @@
 
 export type SortedData = {
     date: string
-    dateList: Array<string>
     last1?: DataInterval
     last7?: DataInterval
     last30?: DataInterval

@@ -7,16 +7,17 @@ import Link from "next/link"
 
 type DateSelectType = {
     date: string,
+    disabled?: boolean
 }
 
-const DateSelect = ({ date }: DateSelectType) => {
-    const dateList = getAvailableDates()
+const DateSelect = ({ date, disabled }: DateSelectType) => {
+    const dateList = !disabled ? getAvailableDates() : []
     return (
         <div className="w-full flex items-end">
           <div className="grow"></div>
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+              <Menu.Button disabled={disabled} className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                 Change Date
                 <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
               </Menu.Button>
