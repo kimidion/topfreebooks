@@ -1,8 +1,8 @@
-import StatPageLoading from "@/components/loading/StatPageLoading"
+import TopFiveLoading from "@/components/loading/TopFiveLoading"
 
 const HomeLoading = () => {
   return (
-    <StatPageLoading />
+    <TopFiveLoading />
   )
 }
 

@@ -1,6 +1,7 @@
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import TagManager from '@/components/client/TagManager';
 import './globals.css'
 
 export const metadata = {
@@ -12,6 +13,7 @@ const RootLayout = ({ children }: {children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
+        <TagManager />
         <Header />
         <main className="m-auto p-2 md:p-4">
           {children}

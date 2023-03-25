@@ -1,6 +1,7 @@
 import "server-only"
 import { google } from 'googleapis'
-import type { SortedData, RankedStats, Stat } from "@/types/TopData"
+import type { SortedData, RankedStats, Stat, SortedTopFive } from "@/types/TopData"
+import { getLatestDateFormatted } from "@/utils/getAvailableDates";
 
 // export async function getAllDailyCount() {
 //   try {
@@ -186,3 +187,60 @@ const parseAuthorList = (data: string): Array<Stat> => {
     }))
     return formatted
 } 
+
+
+export async function getLatestTopFive() {
+    const date = getLatestDateFormatted()
+    try {
+        const target = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+        const jwt = new google.auth.JWT(
+            process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+            undefined,
+            (process.env.GOOGLE_SHEETS_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+            target
+        )
+        const sheets = google.sheets({ version: 'v4', auth: jwt })
+        const dailySheet = await sheets.spreadsheets.values.get({
+            spreadsheetId: process.env.SPREADSHEET_ID,
+            range: 'dailyCount!A:E', // sheet name
+        })
+        const authorSheet = await sheets.spreadsheets.values.get({
+            spreadsheetId: process.env.SPREADSHEET_ID,
+            range: 'topAuthors!A:L', // sheet name
+        })
+        const bookSheet = await sheets.spreadsheets.values.get({
+            spreadsheetId: process.env.SPREADSHEET_ID,
+            range: 'topBooks!A:L', // sheet name
+        })
+        const daily = dailySheet.data.values?.filter((day) => {
+            return day[1] == date 
+        })
+        const authors = authorSheet.data.values?.filter((day) => {
+            return day[1] == date 
+        })
+        const books = bookSheet.data.values?.filter((day) => {
+            return day[1] == date 
+        })
+        let total = 0, top5books: Stat[] = [], top5authors: Stat[] = []
+        if (daily?.length) {
+            total = parseInt(daily[0][2])
+            if (authors?.length) {
+                const top_100_authors = parseAuthorList(authors[0][11])
+                top5authors = top_100_authors.splice(0, 5)
+            }
+            if (books?.length) {
+                const top_100_books = parseBookList(books[0][11])
+                top5books = top_100_books.splice(0, 5)
+            }
+        }
+        return { 
+            date, 
+            total, 
+            books: top5books, 
+            authors: top5authors
+        } as SortedTopFive
+    } catch (err) {
+      console.log(err)
+    }
+    return null
+}

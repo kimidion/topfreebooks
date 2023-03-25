@@ -6,6 +6,13 @@ export type SortedData = {
     last30?: DataInterval
 }
 
+export type SortedTopFive = {
+    date: string
+    total: number
+    books: Stat[]
+    authors: Stat[]
+}
+
 export type DataInterval = {
     total: number
     top_100_authors?: RankedStats
@@ -21,7 +28,7 @@ export type RankedStats = {
     top_25_percent: number
     top_50_count: number
     top_50_percent: number
-    list: Array<Stat>
+    list: Stat[]
 }
 
 export type Stat = {
