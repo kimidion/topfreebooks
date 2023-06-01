@@ -8,14 +8,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   
     try {
-        // This should be the actual path not a rewritten path
-        // e.g. for "/blog/[slug]" this should be "/blog/post-1"
-        // this is revalidating the homepage
-        await res.revalidate('/');
-        // this is revalidating the most recent page
-        const date = getLatestDateFormatted()
-        await res.revalidate(`/${date}`)
-        return res.json({ revalidated: true })
+        if(!req.query.path) {
+            // This should be the actual path not a rewritten path
+            // e.g. for "/blog/[slug]" this should be "/blog/post-1"
+            // this is revalidating the homepage
+            await res.revalidate('/');
+            // this is revalidating the most recent page
+            const date = getLatestDateFormatted()
+            await res.revalidate(`/${date}`)
+            return res.json({ revalidated: true })
+        } else {
+            await res.revalidate(`/${req.query.path}`)
+            return res.json({ revalidated: true })
+        }
     } catch (err) {
         // If there was an error, Next.js will continue
         // to show the last successfully generated page
