@@ -6,7 +6,7 @@ const Header = () => {
             Top Free Books: 
             <span className="block md:inline text-2xl sm:text-3xl ml-1">Trending Public Domain Books<sup>*</sup></span>
           </h1>
-          <p className="text-base font-semibold leading-7 text-fuchsia-400 mb-2">*from the Project Gutenberg website</p>
+          <p className="text-base font-semibold leading-7 text-fuchsia-400 mb-2">*from the <a href="https://gutenberg.org">Project Gutenberg website</a></p>
         </div>
       </header>
     )
